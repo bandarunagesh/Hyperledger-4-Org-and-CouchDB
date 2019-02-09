@@ -1,20 +1,31 @@
-# This explains how to modify organization names and adding couch db
-
-#####The purpose of this document is to explain how we can make changes to the balance transfter example in fabric
+---------------------
+##This explains how to modify organization names, Adding More organizations and adding couch db as state database.
 
 ---------------------------------
 Purpose: Change the naming convention of entities
 
-peer0.org1.example.com to peer0.seller.com
-peer1.org1.example.com to peer1.seller.com
+	peer0.org1.example.com to peer0.seller.com
+	peer1.org1.example.com to peer1.seller.com
+	
+	peer0.org2.example.com to peer0.buyer.com
+	peer1.org2.example.com to peer1.buyer.com
+	
+	ca.org1.example.com to ca.seller.com
+	ca.org2.example.com to ca.buyer.com
 
-peer0.org2.example.com to peer0.buyer.com
-peer1.org2.example.com to peer1.buyer.com
+Add below organizations
 
-ca.org1.example.com to ca.seller.com
-ca.org2.example.com to ca.buyer.com
+	ca.dealer.com
+	ca.delivery.com
+	peer0.dealer.com
+	peer1.dealer.com
+	peer0.delivery.com
+	peer1.delivery.com
+	couchdb for each peer
 
 ---------------------------------
+
+
 
 
 **1. Move to below location** 
@@ -25,7 +36,7 @@ Modify the **cryptogen.yaml **file based on required naming convention perform t
 
 --------------------------------
 
-**Changes to 'docker-compose.yaml'**
+**2. Changes to 'docker-compose.yaml'**
 
 run below command 
 
@@ -44,7 +55,7 @@ In other containers:
 	CORE_PEER_GOSSIP_BOOTSTRAP
 
 --------------------------------
-**change to 'network-config.yaml'**
+**3. change to 'network-config.yaml'**
 
 peers:
 
@@ -63,7 +74,7 @@ Peer:
 ------------------------------
 
 
-**Generate configtxgen**
+**4. Generate configtxgen**
 
 As we have changed the names, we need to re-create the genesis and channel files, so that the new naming convention can be used by the network while interacting
 	
@@ -95,7 +106,7 @@ Replace all references in the testAPIs.sh files
 
 -------------------------------
 
-**Using Couch DB**
+**5. Using Couch DB**
 
 Needs to create couchdb entery for each of the peer in the 'docker-compose.yaml'
 	
