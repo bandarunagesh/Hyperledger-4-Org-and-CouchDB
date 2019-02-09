@@ -94,3 +94,10 @@ As we have changed the names, we need to re-create the genesis and channel files
       - orderer.example.com
       - couchdb0 #usually this does not exists, you need to enter this
     
+	# While enrolling the Org3 and Or4 users system throws some random errors, to avoid this you need to commnet the affiliation and hardcord with Org1 in the 'Helper.JS'
+	
+	//affiliation: userOrg.toLowerCase() + 'Org1.department1'
+	affiliation: 'org1.department1'
+
+
+
