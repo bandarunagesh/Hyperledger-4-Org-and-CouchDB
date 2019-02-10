@@ -7,79 +7,79 @@ version: '2'
 
 services:
 
-  ca.seller.com:
+  ca.patient.com:
     image: hyperledger/fabric-ca
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org1
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.seller.com-cert.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.patient.com-cert.pem
       - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/1bc121b8e103ad59bcc2e43225eba42295ad5f5f4b34096dc04afb5daef54602_sk
       - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.seller.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.patient.com-cert.pem
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/1bc121b8e103ad59bcc2e43225eba42295ad5f5f4b34096dc04afb5daef54602_sk
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ./channel/crypto-config/peerOrganizations/seller.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_seller
+      - ./channel/crypto-config/peerOrganizations/patient.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_patient
 
 
-  ca.buyer.com:
+  ca.hospital.com:
     image: hyperledger/fabric-ca
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org2
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.buyer.com-cert.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.hospital.com-cert.pem
       - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/06478f09439af9d023cb4a8431914225ece893046f1c2bcd5f6cb7d18c105a98_sk
       - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.buyer.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.hospital.com-cert.pem
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/06478f09439af9d023cb4a8431914225ece893046f1c2bcd5f6cb7d18c105a98_sk
     ports:
       - "8054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ./channel/crypto-config/peerOrganizations/buyer.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_buyer
+      - ./channel/crypto-config/peerOrganizations/hospital.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_hospital
 
 
 
 
 
-  ca.dealer.com:
+  ca.lab.com:
     image: hyperledger/fabric-ca
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org3
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.dealer.com-cert.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.lab.com-cert.pem
       - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/7048f180350f78180e555fac042f648e57c72cfe19c522e40ef8cc885b542f59_sk
       - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.dealer.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.lab.com-cert.pem
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/7048f180350f78180e555fac042f648e57c72cfe19c522e40ef8cc885b542f59_sk
     ports:
       - "9054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ./channel/crypto-config/peerOrganizations/dealer.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_dealer
+      - ./channel/crypto-config/peerOrganizations/lab.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_lab
 
 
-  ca.delivery.com:
+  ca.government.com:
     image: hyperledger/fabric-ca
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org4
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.delivery.com-cert.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.government.com-cert.pem
       - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/b358e6e8ae134986fbdfafbe4b9c82b1b606f2cc7aff24489181928e72890acd_sk
       - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.delivery.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.government.com-cert.pem
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/b358e6e8ae134986fbdfafbe4b9c82b1b606f2cc7aff24489181928e72890acd_sk
     ports:
       - "1054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ./channel/crypto-config/peerOrganizations/delivery.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_delivery
+      - ./channel/crypto-config/peerOrganizations/government.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_government
 
 
 
@@ -106,10 +106,10 @@ services:
     volumes:
         - ./channel:/etc/hyperledger/configtx
         - ./channel/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/:/etc/hyperledger/crypto/orderer
-        - ./channel/crypto-config/peerOrganizations/seller.com/peers/peer0.seller.com/:/etc/hyperledger/crypto/peerOrg1
-        - ./channel/crypto-config/peerOrganizations/buyer.com/peers/peer0.buyer.com/:/etc/hyperledger/crypto/peerOrg2
-        - ./channel/crypto-config/peerOrganizations/dealer.com/peers/peer0.dealer.com/:/etc/hyperledger/crypto/peerOrg3
-        - ./channel/crypto-config/peerOrganizations/delivery.com/peers/peer0.delivery.com/:/etc/hyperledger/crypto/peerOrg4
+        - ./channel/crypto-config/peerOrganizations/patient.com/peers/peer0.patient.com/:/etc/hyperledger/crypto/peerOrg1
+        - ./channel/crypto-config/peerOrganizations/hospital.com/peers/peer0.hospital.com/:/etc/hyperledger/crypto/peerOrg2
+        - ./channel/crypto-config/peerOrganizations/lab.com/peers/peer0.lab.com/:/etc/hyperledger/crypto/peerOrg3
+        - ./channel/crypto-config/peerOrganizations/government.com/peers/peer0.government.com/:/etc/hyperledger/crypto/peerOrg4
   couchdb0:
     container_name: couchdb0
     image: hyperledger/fabric-couchdb
@@ -123,17 +123,17 @@ services:
 
 
 
-  peer0.seller.com:
-    container_name: peer0.seller.com
+  peer0.patient.com:
+    container_name: peer0.patient.com
     extends:
       file:   base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer0.seller.com
+      - CORE_PEER_ID=peer0.patient.com
       - CORE_PEER_LOCALMSPID=Org1MSP
-      - CORE_PEER_ADDRESS=peer0.seller.com:7051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.seller.com:7051      
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.seller.com:7051
+      - CORE_PEER_ADDRESS=peer0.patient.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.patient.com:7051      
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.patient.com:7051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb0:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -142,7 +142,7 @@ services:
       - 7051:7051
       - 7053:7053
     volumes:
-        - ./channel/crypto-config/peerOrganizations/seller.com/peers/peer0.seller.com/:/etc/hyperledger/crypto/peer
+        - ./channel/crypto-config/peerOrganizations/patient.com/peers/peer0.patient.com/:/etc/hyperledger/crypto/peer
     depends_on:
       - orderer.example.com
       - couchdb0
@@ -159,17 +159,17 @@ services:
       - 6984:5984
 
       
-  peer1.seller.com:
-    container_name: peer1.seller.com
+  peer1.patient.com:
+    container_name: peer1.patient.com
     extends:
       file:   base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.seller.com
+      - CORE_PEER_ID=peer1.patient.com
       - CORE_PEER_LOCALMSPID=Org1MSP
-      - CORE_PEER_ADDRESS=peer1.seller.com:7051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.seller.com:7051      
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.seller.com:7051
+      - CORE_PEER_ADDRESS=peer1.patient.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.patient.com:7051      
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.patient.com:7051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb1:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -178,7 +178,7 @@ services:
       - 7056:7051
       - 7058:7053
     volumes:
-        - ./channel/crypto-config/peerOrganizations/seller.com/peers/peer1.seller.com/:/etc/hyperledger/crypto/peer
+        - ./channel/crypto-config/peerOrganizations/patient.com/peers/peer1.patient.com/:/etc/hyperledger/crypto/peer
     depends_on:
       - orderer.example.com
       - couchdb1
@@ -196,17 +196,17 @@ services:
       - 7984:5984
 
     
-  peer0.buyer.com:
-    container_name: peer0.buyer.com
+  peer0.hospital.com:
+    container_name: peer0.hospital.com
     extends:
       file:   base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer0.buyer.com
+      - CORE_PEER_ID=peer0.hospital.com
       - CORE_PEER_LOCALMSPID=Org2MSP
-      - CORE_PEER_ADDRESS=peer0.buyer.com:7051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.buyer.com:7051      
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.buyer.com:7051
+      - CORE_PEER_ADDRESS=peer0.hospital.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.hospital.com:7051      
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.hospital.com:7051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb2:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -215,7 +215,7 @@ services:
       - 8051:7051
       - 8053:7053
     volumes:
-        - ./channel/crypto-config/peerOrganizations/buyer.com/peers/peer0.buyer.com/:/etc/hyperledger/crypto/peer
+        - ./channel/crypto-config/peerOrganizations/hospital.com/peers/peer0.hospital.com/:/etc/hyperledger/crypto/peer
     depends_on:
       - orderer.example.com
       - couchdb2
@@ -231,17 +231,17 @@ services:
     ports:
       - 4984:5984
       
-  peer1.buyer.com:
-    container_name: peer1.buyer.com
+  peer1.hospital.com:
+    container_name: peer1.hospital.com
     extends:
       file:   base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.buyer.com
+      - CORE_PEER_ID=peer1.hospital.com
       - CORE_PEER_LOCALMSPID=Org2MSP
-      - CORE_PEER_ADDRESS=peer1.buyer.com:7051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.buyer.com:7051      
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.buyer.com:7051
+      - CORE_PEER_ADDRESS=peer1.hospital.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.hospital.com:7051      
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.hospital.com:7051
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb3:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
@@ -250,7 +250,7 @@ services:
       - 8056:7051
       - 8058:7053
     volumes:
-        - ./channel/crypto-config/peerOrganizations/buyer.com/peers/peer1.buyer.com/:/etc/hyperledger/crypto/peer
+        - ./channel/crypto-config/peerOrganizations/hospital.com/peers/peer1.hospital.com/:/etc/hyperledger/crypto/peer
     depends_on:
       - orderer.example.com
       - couchdb3
@@ -270,17 +270,17 @@ services:
 
 
 
-  peer0.dealer.com:
-    container_name: peer0.dealer.com
+  peer0.lab.com:
+    container_name: peer0.lab.com
     extends:
       file:   base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer0.dealer.com
+      - CORE_PEER_ID=peer0.lab.com
       - CORE_PEER_LOCALMSPID=Org3MSP
-      - CORE_PEER_ADDRESS=peer0.dealer.com:7051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.dealer.com:7051      
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.dealer.com:7051
+      - CORE_PEER_ADDRESS=peer0.lab.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.lab.com:7051      
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.lab.com:7051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb4:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -289,7 +289,7 @@ services:
       - 9051:7051
       - 9053:7053
     volumes:
-        - ./channel/crypto-config/peerOrganizations/dealer.com/peers/peer0.dealer.com/:/etc/hyperledger/crypto/peer
+        - ./channel/crypto-config/peerOrganizations/lab.com/peers/peer0.lab.com/:/etc/hyperledger/crypto/peer
     depends_on:
       - orderer.example.com
       - couchdb4
@@ -306,17 +306,17 @@ services:
       - 2984:5984
 
       
-  peer1.dealer.com:
-    container_name: peer1.dealer.com
+  peer1.lab.com:
+    container_name: peer1.lab.com
     extends:
       file:   base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.dealer.com
+      - CORE_PEER_ID=peer1.lab.com
       - CORE_PEER_LOCALMSPID=Org3MSP
-      - CORE_PEER_ADDRESS=peer1.dealer.com:7051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.dealer.com:7051      
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.dealer.com:7051
+      - CORE_PEER_ADDRESS=peer1.lab.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.lab.com:7051      
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.lab.com:7051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb5:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -325,7 +325,7 @@ services:
       - 9056:7051
       - 9058:7053
     volumes:
-        - ./channel/crypto-config/peerOrganizations/dealer.com/peers/peer1.dealer.com/:/etc/hyperledger/crypto/peer
+        - ./channel/crypto-config/peerOrganizations/lab.com/peers/peer1.lab.com/:/etc/hyperledger/crypto/peer
     depends_on:
       - orderer.example.com
       - couchdb5
@@ -341,17 +341,17 @@ services:
     ports:
       - 3984:5984
 
-  peer0.delivery.com:
-    container_name: peer0.delivery.com
+  peer0.government.com:
+    container_name: peer0.government.com
     extends:
       file:   base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer0.delivery.com
+      - CORE_PEER_ID=peer0.government.com
       - CORE_PEER_LOCALMSPID=Org4MSP
-      - CORE_PEER_ADDRESS=peer0.delivery.com:7051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.delivery.com:7051      
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.delivery.com:7051
+      - CORE_PEER_ADDRESS=peer0.government.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.government.com:7051      
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.government.com:7051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb6:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -360,7 +360,7 @@ services:
       - 4051:7051
       - 4053:7053
     volumes:
-        - ./channel/crypto-config/peerOrganizations/delivery.com/peers/peer0.delivery.com/:/etc/hyperledger/crypto/peer
+        - ./channel/crypto-config/peerOrganizations/government.com/peers/peer0.government.com/:/etc/hyperledger/crypto/peer
     depends_on:
       - orderer.example.com
       - couchdb6
@@ -377,17 +377,17 @@ services:
       - 9984:5984
 
       
-  peer1.delivery.com:
-    container_name: peer1.delivery.com
+  peer1.government.com:
+    container_name: peer1.government.com
     extends:
       file:   base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.delivery.com
+      - CORE_PEER_ID=peer1.government.com
       - CORE_PEER_LOCALMSPID=Org4MSP
-      - CORE_PEER_ADDRESS=peer1.delivery.com:7051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.delivery.com:7051      
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.delivery.com:7051
+      - CORE_PEER_ADDRESS=peer1.government.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.government.com:7051      
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.government.com:7051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb7:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -396,7 +396,7 @@ services:
       - 3056:7051
       - 3058:7053
     volumes:
-        - ./channel/crypto-config/peerOrganizations/delivery.com/peers/peer1.delivery.com/:/etc/hyperledger/crypto/peer
+        - ./channel/crypto-config/peerOrganizations/government.com/peers/peer1.government.com/:/etc/hyperledger/crypto/peer
     depends_on:
       - orderer.example.com
       - couchdb7

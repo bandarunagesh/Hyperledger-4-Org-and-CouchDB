@@ -56,7 +56,7 @@ setChaincodePath
 echo "POST request Enroll on Org1  ..."
 echo
 ORG1_TOKEN=$(curl -s -X POST \
-  http://localhost:4000/users \
+  http://localhost:8080/users \
   -H "content-type: application/x-www-form-urlencoded" \
   -d 'username=Jim&orgName=Org1')
 echo $ORG1_TOKEN
@@ -67,7 +67,7 @@ echo
 echo "POST request Enroll on Org2 ..."
 echo
 ORG2_TOKEN=$(curl -s -X POST \
-  http://localhost:4000/users \
+  http://localhost:8080/users \
   -H "content-type: application/x-www-form-urlencoded" \
   -d 'username=Barry&orgName=Org2')
 echo $ORG2_TOKEN
@@ -78,7 +78,7 @@ echo "ORG2 token is $ORG2_TOKEN"
 echo "POST request Enroll on Org3 ..."
 echo
 ORG3_TOKEN=$(curl -s -X POST \
-  http://localhost:4000/users \
+  http://localhost:8080/users \
   -H "content-type: application/x-www-form-urlencoded" \
   -d 'username=nagesh&orgName=Org3')
 echo $ORG3_TOKEN
@@ -89,7 +89,7 @@ echo "ORG3 token is $ORG3_TOKEN"
 echo "POST request Enroll on Org4 ..."
 echo
 ORG4_TOKEN=$(curl -s -X POST \
-  http://localhost:4000/users \
+  http://localhost:8080/users \
   -H "content-type: application/x-www-form-urlencoded" \
   -d 'username=raju&orgName=Org4')
 echo $ORG4_TOKEN
@@ -102,7 +102,7 @@ echo
 echo "POST request Create channel  ..."
 echo
 curl -s -X POST \
-  http://localhost:4000/channels \
+  http://localhost:8080/channels \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json" \
   -d '{
@@ -115,11 +115,11 @@ sleep 5
 echo "POST request Join channel on Org1"
 echo
 curl -s -X POST \
-  http://localhost:4000/channels/mychannel/peers \
+  http://localhost:8080/channels/mychannel/peers \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json" \
   -d '{
-	"peers": ["peer0.seller.com","peer1.seller.com"]
+	"peers": ["peer0.patient.com","peer1.patient.com"]
 }'
 echo
 echo
@@ -127,11 +127,11 @@ echo
 echo "POST request Join channel on Org2"
 echo
 curl -s -X POST \
-  http://localhost:4000/channels/mychannel/peers \
+  http://localhost:8080/channels/mychannel/peers \
   -H "authorization: Bearer $ORG2_TOKEN" \
   -H "content-type: application/json" \
   -d '{
-	"peers": ["peer0.buyer.com","peer1.buyer.com"]
+	"peers": ["peer0.hospital.com","peer1.hospital.com"]
 }'
 echo
 echo
@@ -140,11 +140,11 @@ echo
 echo "POST request Join channel on Org3"
 echo
 curl -s -X POST \
-  http://localhost:4000/channels/mychannel/peers \
+  http://localhost:8080/channels/mychannel/peers \
   -H "authorization: Bearer $ORG3_TOKEN" \
   -H "content-type: application/json" \
   -d '{
-	"peers": ["peer0.dealer.com","peer1.dealer.com"]
+	"peers": ["peer0.lab.com","peer1.lab.com"]
 }'
 echo
 echo
@@ -152,11 +152,11 @@ echo
 echo "POST request Join channel on Org4"
 echo
 curl -s -X POST \
-  http://localhost:4000/channels/mychannel/peers \
+  http://localhost:8080/channels/mychannel/peers \
   -H "authorization: Bearer $ORG4_TOKEN" \
   -H "content-type: application/json" \
   -d '{
-	"peers": ["peer0.delivery.com","peer1.delivery.com"]
+	"peers": ["peer0.government.com","peer1.government.com"]
 }'
 echo
 echo
@@ -166,11 +166,11 @@ echo
 echo "POST Install chaincode Patient on Org1"
 echo
 curl -s -X POST \
-  http://localhost:4000/chaincodes \
+  http://localhost:8080/chaincodes \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json" \
   -d "{
-	\"peers\": [\"peer0.seller.com\",\"peer1.seller.com\"],
+	\"peers\": [\"peer0.patient.com\",\"peer1.patient.com\"],
 	\"chaincodeName\":\"patient\",
 	\"chaincodePath\":\"$CC_SRC_PATH_N\",
 	\"chaincodeType\": \"$LANGUAGE\",
@@ -185,11 +185,11 @@ echo
 echo "POST Install chaincode Patient on Org2"
 echo
 curl -s -X POST \
-  http://localhost:4000/chaincodes \
+  http://localhost:8080/chaincodes \
   -H "authorization: Bearer $ORG2_TOKEN" \
   -H "content-type: application/json" \
   -d "{
-	\"peers\": [\"peer0.buyer.com\",\"peer1.buyer.com\"],
+	\"peers\": [\"peer0.hospital.com\",\"peer1.hospital.com\"],
 	\"chaincodeName\":\"patient\",
 	\"chaincodePath\":\"$CC_SRC_PATH_N\",
 	\"chaincodeType\": \"$LANGUAGE\",
@@ -204,11 +204,11 @@ echo
 echo "POST Install chaincode Patient on Org3"
 echo
 curl -s -X POST \
-  http://localhost:4000/chaincodes \
+  http://localhost:8080/chaincodes \
   -H "authorization: Bearer $ORG3_TOKEN" \
   -H "content-type: application/json" \
   -d "{
-	\"peers\": [\"peer0.dealer.com\",\"peer1.dealer.com\"],
+	\"peers\": [\"peer0.lab.com\",\"peer1.lab.com\"],
 	\"chaincodeName\":\"patient\",
 	\"chaincodePath\":\"$CC_SRC_PATH_N\",
 	\"chaincodeType\": \"$LANGUAGE\",
@@ -222,11 +222,11 @@ echo
 echo "POST Install chaincode Patient on Org4"
 echo
 curl -s -X POST \
-  http://localhost:4000/chaincodes \
+  http://localhost:8080/chaincodes \
   -H "authorization: Bearer $ORG4_TOKEN" \
   -H "content-type: application/json" \
   -d "{
-	\"peers\": [\"peer0.delivery.com\",\"peer1.delivery.com\"],
+	\"peers\": [\"peer0.government.com\",\"peer1.government.com\"],
 	\"chaincodeName\":\"patient\",
 	\"chaincodePath\":\"$CC_SRC_PATH_N\",
 	\"chaincodeType\": \"$LANGUAGE\",
@@ -240,7 +240,7 @@ echo
 echo "POST instantiate chaincode patient on Org1"
 echo
 curl -s -X POST \
-  http://localhost:4000/channels/mychannel/chaincodes \
+  http://localhost:8080/channels/mychannel/chaincodes \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json" \
   -d "{
@@ -258,11 +258,11 @@ echo
 echo "POST invoke chaincode patient on peers of Org1 and Org2"
 echo
 TRX_ID_N=$(curl -s -X POST \
-  http://localhost:4000/channels/mychannel/chaincodes/patient \
+  http://localhost:8080/channels/mychannel/chaincodes/patient \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json" \
   -d '{
-	"peers": ["peer0.seller.com","peer0.buyer.com","peer0.dealer.com","peer0.delivery.com"],
+	"peers": ["peer0.patient.com","peer0.hospital.com","peer0.lab.com","peer0.government.com"],
 	"fcn":"initPatient",
 	"args":["1234","provider1","nagesh","bandaru","nagesh@outlook.com","11-10-1985","11111","44444"]
 }')
@@ -274,11 +274,11 @@ echo
 echo "POST invoke chaincode patient on peers of Org1 and Org2"
 echo
 TRX_ID_N=$(curl -s -X POST \
-  http://localhost:4000/channels/mychannel/chaincodes/patient \
+  http://localhost:8080/channels/mychannel/chaincodes/patient \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json" \
   -d '{
-	"peers": ["peer0.seller.com","peer0.buyer.com","peer0.dealer.com","peer0.delivery.com"],
+	"peers": ["peer0.patient.com","peer0.hospital.com","peer0.lab.com","peer0.government.com"],
 	"fcn":"updateProvider",
 	"args":["1234","provider2"]
 }')
@@ -291,7 +291,7 @@ echo
 echo "GET query chaincode patient on peer1 of Org1"
 echo
 curl -s -X GET \
-  "http://localhost:4000/channels/mychannel/chaincodes/patient?peer=peer0.seller.com&fcn=readPatient&args=%5B%221234%22%5D" \
+  "http://localhost:8080/channels/mychannel/chaincodes/patient?peer=peer0.patient.com&fcn=readPatient&args=%5B%221234%22%5D" \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json"
 echo
@@ -301,7 +301,7 @@ echo
 
 echo "GET query Transaction by TransactionID"
 echo
-curl -s -X GET http://localhost:4000/channels/mychannel/transactions/$TRX_ID_N?peer=peer0.seller.com \
+curl -s -X GET http://localhost:8080/channels/mychannel/transactions/$TRX_ID_N?peer=peer0.patient.com \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json"
 echo
@@ -316,7 +316,7 @@ echo
 #echo
 #hash=????
 #curl -s -X GET \
-#  "http://localhost:4000/channels/mychannel/blocks?hash=$hash&peer=peer1" \
+#  "http://localhost:8080/channels/mychannel/blocks?hash=$hash&peer=peer1" \
 #  -H "authorization: Bearer $ORG1_TOKEN" \
 #  -H "cache-control: no-cache" \
 #  -H "content-type: application/json" \
@@ -327,7 +327,7 @@ echo
 echo "GET query ChainInfo"
 echo
 curl -s -X GET \
-  "http://localhost:4000/channels/mychannel?peer=peer0.seller.com" \
+  "http://localhost:8080/channels/mychannel?peer=peer0.patient.com" \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json"
 echo
@@ -336,7 +336,7 @@ echo
 echo "GET query Installed chaincodes"
 echo
 curl -s -X GET \
-  "http://localhost:4000/chaincodes?peer=peer0.seller.com" \
+  "http://localhost:8080/chaincodes?peer=peer0.patient.com" \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json"
 echo
@@ -345,7 +345,7 @@ echo
 echo "GET query Instantiated chaincodes"
 echo
 curl -s -X GET \
-  "http://localhost:4000/channels/mychannel/chaincodes?peer=peer0.seller.com" \
+  "http://localhost:8080/channels/mychannel/chaincodes?peer=peer0.patient.com" \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json"
 echo
@@ -354,7 +354,7 @@ echo
 echo "GET query Channels"
 echo
 curl -s -X GET \
-  "http://localhost:4000/channels?peer=peer0.seller.com" \
+  "http://localhost:8080/channels?peer=peer0.patient.com" \
   -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json"
 echo

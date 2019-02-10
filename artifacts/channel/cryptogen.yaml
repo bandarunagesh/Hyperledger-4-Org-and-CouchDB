@@ -27,7 +27,7 @@ PeerOrgs:
   # Org1
   # ---------------------------------------------------------------------------
   - Name: Org1
-    Domain: seller.com
+    Domain: patient.com
 
     # ---------------------------------------------------------------------------
     # "CA"
@@ -101,7 +101,7 @@ PeerOrgs:
   # Org2: See "Org1" for full specification
   # ---------------------------------------------------------------------------
   - Name: Org2
-    Domain: buyer.com
+    Domain: hospital.com
     CA:
        Hostname: ca # implicitly ca.org1.example.com
 
@@ -117,7 +117,7 @@ PeerOrgs:
   # Org3: See "Org1" for full specification
   # ---------------------------------------------------------------------------
   - Name: Org3
-    Domain: dealer.com
+    Domain: lab.com
     CA:
        Hostname: ca # implicitly ca.org1.example.com
 
@@ -133,7 +133,7 @@ PeerOrgs:
   # Org4: See "Org1" for full specification
   # ---------------------------------------------------------------------------
   - Name: Org4
-    Domain: delivery.com
+    Domain: government.com
     CA:
        Hostname: ca # implicitly ca.org1.example.com
 

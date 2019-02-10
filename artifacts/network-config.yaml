@@ -48,7 +48,7 @@ channels:
 
     # Required. list of peers from participating orgs
     peers:
-      peer0.seller.com:
+      peer0.patient.com:
         # [Optional]. will this peer be sent transaction proposals for endorsement? The peer must
         # have the chaincode installed. The app can also use this property to decide which peers
         # to send the chaincode install request. Default: true
@@ -68,44 +68,44 @@ channels:
         # Default: true
         eventSource: true
 
-      peer1.seller.com:
+      peer1.patient.com:
         endorsingPeer: false
         chaincodeQuery: true
         ledgerQuery: true
         eventSource: false
 
-      peer0.buyer.com:
+      peer0.hospital.com:
         endorsingPeer: true
         chaincodeQuery: true
         ledgerQuery: true
         eventSource: true
 
-      peer1.buyer.com:
+      peer1.hospital.com:
         endorsingPeer: false
         chaincodeQuery: true
         ledgerQuery: true
         eventSource: false
 
 
-      peer0.dealer.com:
+      peer0.lab.com:
         endorsingPeer: true
         chaincodeQuery: true
         ledgerQuery: true
         eventSource: true
 
-      peer1.dealer.com:
+      peer1.lab.com:
         endorsingPeer: false
         chaincodeQuery: true
         ledgerQuery: true
         eventSource: false
 
-      peer0.delivery.com:
+      peer0.government.com:
         endorsingPeer: true
         chaincodeQuery: true
         ledgerQuery: true
         eventSource: true
 
-      peer1.delivery.com:
+      peer1.government.com:
         endorsingPeer: false
         chaincodeQuery: true
         ledgerQuery: true
@@ -127,8 +127,8 @@ organizations:
     mspid: Org1MSP
 
     peers:
-      - peer0.seller.com
-      - peer1.seller.com
+      - peer0.patient.com
+      - peer1.patient.com
 
     # [Optional]. Certificate Authorities issue certificates for identification purposes in a Fabric based
     # network. Typically certificates provisioning is done in a separate process outside of the
@@ -146,9 +146,9 @@ organizations:
     # this way. The SDK should allow applications to set the org admin identity via APIs, and only use
     # this route as an alternative when it exists.
     adminPrivateKey:
-      path: artifacts/channel/crypto-config/peerOrganizations/seller.com/users/Admin@seller.com/msp/keystore/1be1e9d424e5f47e5b30c7cabb513702c176d74b70122d435038d829cf213b97_sk
+      path: artifacts/channel/crypto-config/peerOrganizations/patient.com/users/Admin@patient.com/msp/keystore/1be1e9d424e5f47e5b30c7cabb513702c176d74b70122d435038d829cf213b97_sk
     signedCert:
-      path: artifacts/channel/crypto-config/peerOrganizations/seller.com/users/Admin@seller.com/msp/signcerts/Admin@seller.com-cert.pem
+      path: artifacts/channel/crypto-config/peerOrganizations/patient.com/users/Admin@patient.com/msp/signcerts/Admin@patient.com-cert.pem
 
   # the profile will contain public information about organizations other than the one it belongs to.
   # These are necessary information to make transaction lifecycles work, including MSP IDs and
@@ -158,39 +158,39 @@ organizations:
   Org2:
     mspid: Org2MSP
     peers:
-      - peer0.buyer.com
-      - peer1.buyer.com
+      - peer0.hospital.com
+      - peer1.hospital.com
     certificateAuthorities:
       - ca-org2
     adminPrivateKey:
-      path: artifacts/channel/crypto-config/peerOrganizations/buyer.com/users/Admin@buyer.com/msp/keystore/dff924d79a06cc576dfe4b8aeeeb619e1a61b618e10fc804f4c5c42a87d3670a_sk
+      path: artifacts/channel/crypto-config/peerOrganizations/hospital.com/users/Admin@hospital.com/msp/keystore/dff924d79a06cc576dfe4b8aeeeb619e1a61b618e10fc804f4c5c42a87d3670a_sk
     signedCert:
-      path: artifacts/channel/crypto-config/peerOrganizations/buyer.com/users/Admin@buyer.com/msp/signcerts/Admin@buyer.com-cert.pem
+      path: artifacts/channel/crypto-config/peerOrganizations/hospital.com/users/Admin@hospital.com/msp/signcerts/Admin@hospital.com-cert.pem
 
   Org3:
     mspid: Org3MSP
     peers:
-      - peer0.dealer.com
-      - peer1.dealer.com
+      - peer0.lab.com
+      - peer1.lab.com
     certificateAuthorities:
       - ca-org3
     adminPrivateKey:
-      path: artifacts/channel/crypto-config/peerOrganizations/dealer.com/users/Admin@dealer.com/msp/keystore/9600b9f6580ab6df9bd5f7fc965ebdf5304e950a6a781c0a811aba5d25ef585c_sk
+      path: artifacts/channel/crypto-config/peerOrganizations/lab.com/users/Admin@lab.com/msp/keystore/9600b9f6580ab6df9bd5f7fc965ebdf5304e950a6a781c0a811aba5d25ef585c_sk
     signedCert:
-      path: artifacts/channel/crypto-config/peerOrganizations/dealer.com/users/Admin@dealer.com/msp/signcerts/Admin@dealer.com-cert.pem
+      path: artifacts/channel/crypto-config/peerOrganizations/lab.com/users/Admin@lab.com/msp/signcerts/Admin@lab.com-cert.pem
 
 
   Org4:
     mspid: Org4MSP
     peers:
-      - peer0.delivery.com
-      - peer1.delivery.com
+      - peer0.government.com
+      - peer1.government.com
     certificateAuthorities:
       - ca-org4
     adminPrivateKey:
-      path: artifacts/channel/crypto-config/peerOrganizations/delivery.com/users/Admin@delivery.com/msp/keystore/1a9949cb734bfe559ed0da975cad120daae52199ffc8bccbdd182ebd8e1ded44_sk
+      path: artifacts/channel/crypto-config/peerOrganizations/government.com/users/Admin@government.com/msp/keystore/1a9949cb734bfe559ed0da975cad120daae52199ffc8bccbdd182ebd8e1ded44_sk
     signedCert:
-      path: artifacts/channel/crypto-config/peerOrganizations/delivery.com/users/Admin@delivery.com/msp/signcerts/Admin@delivery.com-cert.pem
+      path: artifacts/channel/crypto-config/peerOrganizations/government.com/users/Admin@government.com/msp/signcerts/Admin@government.com-cert.pem
 
 
 #
@@ -215,67 +215,67 @@ orderers:
 # and event listener registration.
 #
 peers:
-  peer0.seller.com:
+  peer0.patient.com:
     # this URL is used to send endorsement and query requests
     url: grpcs://localhost:7051
 
     grpcOptions:
-      ssl-target-name-override: peer0.seller.com
+      ssl-target-name-override: peer0.patient.com
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/seller.com/peers/peer0.seller.com/tls/ca.crt
+      path: artifacts/channel/crypto-config/peerOrganizations/patient.com/peers/peer0.patient.com/tls/ca.crt
 
-  peer1.seller.com:
+  peer1.patient.com:
     url: grpcs://localhost:7056
     grpcOptions:
-      ssl-target-name-override: peer1.seller.com
+      ssl-target-name-override: peer1.patient.com
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/seller.com/peers/peer1.seller.com/tls/ca.crt
+      path: artifacts/channel/crypto-config/peerOrganizations/patient.com/peers/peer1.patient.com/tls/ca.crt
 
-  peer0.buyer.com:
+  peer0.hospital.com:
     url: grpcs://localhost:8051
     grpcOptions:
-      ssl-target-name-override: peer0.buyer.com
+      ssl-target-name-override: peer0.hospital.com
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/buyer.com/peers/peer0.buyer.com/tls/ca.crt
+      path: artifacts/channel/crypto-config/peerOrganizations/hospital.com/peers/peer0.hospital.com/tls/ca.crt
 
-  peer1.buyer.com:
+  peer1.hospital.com:
     url: grpcs://localhost:8056
     eventUrl: grpcs://localhost:8058
     grpcOptions:
-      ssl-target-name-override: peer1.buyer.com
+      ssl-target-name-override: peer1.hospital.com
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/buyer.com/peers/peer1.buyer.com/tls/ca.crt
+      path: artifacts/channel/crypto-config/peerOrganizations/hospital.com/peers/peer1.hospital.com/tls/ca.crt
 
-  peer0.dealer.com:
+  peer0.lab.com:
     url: grpcs://localhost:9051
     grpcOptions:
-      ssl-target-name-override: peer0.dealer.com
+      ssl-target-name-override: peer0.lab.com
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/dealer.com/peers/peer0.dealer.com/tls/ca.crt
+      path: artifacts/channel/crypto-config/peerOrganizations/lab.com/peers/peer0.lab.com/tls/ca.crt
 
-  peer1.dealer.com:
+  peer1.lab.com:
     url: grpcs://localhost:9056
     eventUrl: grpcs://localhost:9058
     grpcOptions:
-      ssl-target-name-override: peer1.dealer.com
+      ssl-target-name-override: peer1.lab.com
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/dealer.com/peers/peer1.dealer.com/tls/ca.crt
+      path: artifacts/channel/crypto-config/peerOrganizations/lab.com/peers/peer1.lab.com/tls/ca.crt
       
       
-  peer0.delivery.com:
+  peer0.government.com:
     url: grpcs://localhost:4051
     grpcOptions:
-      ssl-target-name-override: peer0.delivery.com
+      ssl-target-name-override: peer0.government.com
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/delivery.com/peers/peer0.delivery.com/tls/ca.crt
+      path: artifacts/channel/crypto-config/peerOrganizations/government.com/peers/peer0.government.com/tls/ca.crt
 
-  peer1.delivery.com:
+  peer1.government.com:
     url: grpcs://localhost:3056
     eventUrl: grpcs://localhost:3058
     grpcOptions:
-      ssl-target-name-override: peer1.delivery.com
+      ssl-target-name-override: peer1.government.com
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/delivery.com/peers/peer1.delivery.com/tls/ca.crt      
+      path: artifacts/channel/crypto-config/peerOrganizations/government.com/peers/peer1.government.com/tls/ca.crt      
 #
 # Fabric-CA is a special kind of Certificate Authority provided by Hyperledger Fabric which allows
 # certificate management to be done via REST APIs. Application may choose to use a standard
@@ -289,7 +289,7 @@ certificateAuthorities:
     httpOptions:
       verify: false
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/seller.com/ca/ca.seller.com-cert.pem
+      path: artifacts/channel/crypto-config/peerOrganizations/patient.com/ca/ca.patient.com-cert.pem
 
     # Fabric-CA supports dynamic user enrollment via REST APIs. A "root" user, a.k.a registrar, is
     # needed to enroll and invoke new users.
@@ -304,7 +304,7 @@ certificateAuthorities:
     httpOptions:
       verify: false
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/buyer.com/ca/ca.buyer.com-cert.pem
+      path: artifacts/channel/crypto-config/peerOrganizations/hospital.com/ca/ca.hospital.com-cert.pem
     registrar:
       - enrollId: admin
         enrollSecret: adminpw
@@ -316,7 +316,7 @@ certificateAuthorities:
     httpOptions:
       verify: false
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/dealer.com/ca/ca.dealer.com-cert.pem
+      path: artifacts/channel/crypto-config/peerOrganizations/lab.com/ca/ca.lab.com-cert.pem
     registrar:
       - enrollId: admin
         enrollSecret: adminpw
@@ -328,7 +328,7 @@ certificateAuthorities:
     httpOptions:
       verify: false
     tlsCACerts:
-      path: artifacts/channel/crypto-config/peerOrganizations/delivery.com/ca/ca.delivery.com-cert.pem
+      path: artifacts/channel/crypto-config/peerOrganizations/government.com/ca/ca.government.com-cert.pem
     registrar:
       - enrollId: admin
         enrollSecret: adminpw

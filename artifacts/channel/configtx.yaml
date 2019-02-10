@@ -35,13 +35,13 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org1MSP
 
-        MSPDir: crypto-config/peerOrganizations/seller.com/msp
+        MSPDir: crypto-config/peerOrganizations/patient.com/msp
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.seller.com
+            - Host: peer0.patient.com
               Port: 7051
 
     - &Org2
@@ -52,13 +52,13 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org2MSP
 
-        MSPDir: crypto-config/peerOrganizations/buyer.com/msp
+        MSPDir: crypto-config/peerOrganizations/hospital.com/msp
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.buyer.com
+            - Host: peer0.hospital.com
               Port: 7051
 
     - &Org3
@@ -69,13 +69,13 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org3MSP
 
-        MSPDir: crypto-config/peerOrganizations/dealer.com/msp
+        MSPDir: crypto-config/peerOrganizations/lab.com/msp
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.dealer.com
+            - Host: peer0.lab.com
               Port: 7051
 
 
@@ -87,13 +87,13 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org4MSP
 
-        MSPDir: crypto-config/peerOrganizations/delivery.com/msp
+        MSPDir: crypto-config/peerOrganizations/government.com/msp
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.delivery.com
+            - Host: peer0.government.com
               Port: 7051
               
 ################################################################################

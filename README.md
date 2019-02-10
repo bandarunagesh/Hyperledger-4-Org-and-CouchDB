@@ -4,23 +4,23 @@
 ---------------------------------
 Purpose: Change the naming convention of entities
 
-	peer0.org1.example.com to peer0.seller.com
-	peer1.org1.example.com to peer1.seller.com
+	peer0.org1.example.com to peer0.patient.com
+	peer1.org1.example.com to peer1.patient.com
 	
-	peer0.org2.example.com to peer0.buyer.com
-	peer1.org2.example.com to peer1.buyer.com
+	peer0.org2.example.com to peer0.hospital.com
+	peer1.org2.example.com to peer1.hospital.com
 	
-	ca.org1.example.com to ca.seller.com
-	ca.org2.example.com to ca.buyer.com
+	ca.org1.example.com to ca.patient.com
+	ca.org2.example.com to ca.hospital.com
 
 Add below organizations
 
-	ca.dealer.com
-	ca.delivery.com
-	peer0.dealer.com
-	peer1.dealer.com
-	peer0.delivery.com
-	peer1.delivery.com
+	ca.lab.com
+	ca.government.com
+	peer0.lab.com
+	peer1.lab.com
+	peer0.government.com
+	peer1.government.com
 	couchdb for each peer
 
 ---------------------------------
@@ -43,7 +43,7 @@ run below command
 /home/seeraj/blockchain/fabric-samples/bin/cryptogen generate --config=./cryptogen.yaml
 
 
-peer0.org1.example.com to seller.peer0.com:
+peer0.org1.example.com to patient.peer0.com:
 
 	container_name
 	CORE_PEER_ID
@@ -59,17 +59,17 @@ In other containers:
 
 peers:
 
-      peer0.org1.example.com to seller.peer0.com:
+      peer0.org1.example.com to patient.peer0.com:
 
 organizations:
 
 	    peers:
-			- peer0.org1.example.com to seller.peer0.com:
+			- peer0.org1.example.com to patient.peer0.com:
 Peer:
 
-	peer0.org1.example.com to seller.peer0.com:
+	peer0.org1.example.com to patient.peer0.com:
 		grpcOptions:
-		  ssl-target-name-override: peer0.org1.example.com to  seller.peer0.com
+		  ssl-target-name-override: peer0.org1.example.com to  patient.peer0.com
 
 ------------------------------
 
@@ -84,7 +84,7 @@ Go to below location
 
 AnchorPeers:
 
-		- Host: peer0.org1.example.com to seller.peer0.com
+		- Host: peer0.org1.example.com to patient.peer0.com
 
 Use below command to consider current path to consider for configtx.yml
 
@@ -102,7 +102,7 @@ regenerate channel.tx
 
 Replace all references in the testAPIs.sh files
 
-	peer0.org1.example.com to seller.peer0.com:
+	peer0.org1.example.com to patient.peer0.com:
 
 -------------------------------
 
